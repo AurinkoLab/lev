@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лев | Юный изобретатель и исследователь</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-card img {
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .badge {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #27ae60);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .interest-icon {
+            width: 64px;
+            height: 64px;
+            background-color: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .interest-item:hover .interest-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .quantum-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(52, 152, 219, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .atom-animation {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+        
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .electron-orbit {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            border: 2px dashed rgba(52, 152, 219, 0.5);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+        }
+        
+        .electron-orbit:nth-child(2) {
+            transform: rotate(60deg);
+            animation-duration: 10s;
+        }
+        
+        .electron-orbit:nth-child(3) {
+            transform: rotate(120deg);
+            animation-duration: 12s;
+        }
+        
+        .electron {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .lego-brick {
+            width: 40px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            position: relative;
+            margin: 5px;
+            display: inline-block;
+        }
+        
+        .lego-brick::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 5px;
+            width: 10px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .lego-brick:nth-child(2n) {
+            background-color: var(--secondary);
+        }
+        
+        .lego-brick:nth-child(2n)::before {
+            background-color: var(--secondary);
+        }
+        
+        .lego-brick:nth-child(3n) {
+            background-color: var(--accent);
+        }
+        
+        .lego-brick:nth-child(3n)::before {
+            background-color: var(--accent);
+        }
+        
+        .bike-wheel {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--dark);
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .bike-wheel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--dark);
+            border-radius: 50%;
+        }
+        
+        .bike-wheel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--dark);
+        }
+        
+        .bike-frame {
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            max-width: 800px;
+            width: 90%;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <!-- <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-[#3498db]">Лев<span class="text-[#2ecc71]">.</span></a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-[#3498db]">Обо мне</a>
+                    <a href="#interests" class="nav-link text-gray-700 hover:text-[#3498db]">Интересы</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-[#3498db]">Проекты</a>
+                    <a href="#gallery" class="nav-link text-gray-700 hover:text-[#3498db]">Галерея</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-[#3498db]">Контакты</a>
+                </div>
+                <button id="menuBtn" class="md:hidden text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div> -->
+            
+            <!-- Мобильное меню -->
+            <div id="mobileMenu" class="md:hidden hidden pt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="#about" class="text-gray-700 hover:text-[#3498db]">Обо мне</a>
+                    <a href="#interests" class="text-gray-700 hover:text-[#3498db]">Интересы</a>
+                    <a href="#projects" class="text-gray-700 hover:text-[#3498db]">Проекты</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-[#3498db]">Галерея</a>
+                    <a href="#contact" class="text-gray-700 hover:text-[#3498db]">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный баннер -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Привет! Я Лев</h1>
+                    <h2 class="text-xl md:text-2xl mb-6">Юный изобретатель и исследователь из Эспоо</h2>
+                    <p class="text-lg mb-8">Мне 11 лет, и я увлекаюсь квантовой физикой, дизайном, конструированием и изучением окружающего мира. Добро пожаловать на мой сайт!</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="btn-primary">Мои проекты</a>
+                        <a href="#contact" class="btn-secondary">Связаться со мной</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <!-- Анимация атома -->
+                        <div class="atom-animation">
+                            <div class="nucleus"></div>
+                            <div class="electron-orbit">
+                                <div class="electron"></div>
+                            </div>
+                            <div class="electron-orbit">
+                                <div class="electron"></div>
+                            </div>
+                            <div class="electron-orbit">
+                                <div class="electron"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Лего кирпичики вокруг -->
+                        <div class="absolute top-0 right-0">
+                            <div class="lego-brick"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0">
+                            <div class="lego-brick"></div>
+                        </div>
+                        <div class="absolute bottom-10 right-10">
+                            <div class="lego-brick"></div>
+                        </div>
+                        
+                        <!-- Байк -->
+                        <div class="absolute bottom-0 right-0 flex items-center">
+                            <div class="bike-wheel"></div>
+                            <div class="bike-frame"></div>
+                            <div class="bike-wheel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-title">Обо мне</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <svg class="w-full max-w-md mx-auto" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Стилизованная иллюстрация мальчика с книгами и научными элементами -->
+                        <circle cx="200" cy="150" r="80" fill="#ecf0f1" stroke="#3498db" stroke-width="3"/>
+                        <circle cx="170" cy="130" r="10" fill="#2c3e50"/>
+                        <circle cx="230" cy="130" r="10" fill="#2c3e50"/>
+                        <path d="M180 170 Q200 190 220 170" stroke="#2c3e50" stroke-width="3" fill="none"/>
+                        
+                        <!-- Волосы -->
+                        <path d="M140 100 Q200 50 260 100" stroke="#2c3e50" stroke-width="20" fill="none"/>
+                        
+                        <!-- Книги -->
+                        <rect x="100" y="250" width="60" height="80" fill="#3498db"/>
+                        <rect x="110" y="240" width="60" height="80" fill="#2ecc71"/>
+                        <rect x="120" y="230" width="60" height="80" fill="#f39c12"/>
+                        
+                        <!-- Формулы -->
+                        <text x="240" y="260" font-family="monospace" font-size="12" fill="#2c3e50">E=mc²</text>
+                        <text x="240" y="280" font-family="monospace" font-size="12" fill="#2c3e50">ψ(r,t)</text>
+                        <text x="240" y="300" font-family="monospace" font-size="12" fill="#2c3e50">∇²ψ = 0</text>
+                        
+                        <!-- Лего кирпичики -->
+                        <rect x="300" y="320" width="30" height="15" fill="#3498db" rx="2"/>
+                        <rect x="305" y="310" width="20" height="10" fill="#3498db" rx="5"/>
+                        
+                        <rect x="270" y="330" width="30" height="15" fill="#2ecc71" rx="2"/>
+                        <rect x="275" y="320" width="20" height="10" fill="#2ecc71" rx="5"/>
+                        
+                        <rect x="310" y="340" width="30" height="15" fill="#f39c12" rx="2"/>
+                        <rect x="315" y="330" width="20" height="10" fill="#f39c12" rx="5"/>
+                    </svg>
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg mb-4">Привет! Меня зовут Лев, мне 11 лет, и я живу в городе Эспоо, Финляндия. Я учусь в 5 классе и очень люблю узнавать новое о мире вокруг нас.</p>
+                    <p class="text-lg mb-4">С раннего детства меня интересовали наука и творчество. Я обожаю читать книги, интересуюсь квантовой физикой, луюблю смотреть научно-популярные видео и проводить собственные эксперименты.</p>
+                    <p class="text-lg mb-4">В свободное время я конструирую модели из Лего, создаю различные технические проекты и изучаю новые технологии. Мой самый большой проект на данный момент — это электрический байк.</p>
+                    <p class="text-lg">Я мечтаю стать ученым или инженером, чтобы создавать инновационные продукты, которые помогут людям и сделают мир лучше!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мои интересы -->
+    <section id="interests" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-title">Мои интересы</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+                <!-- Квантовая физика -->
+                <div class="interest-item bg-white p-6 rounded-lg shadow-md">
+                    <div class="interest-icon mx-auto">
+                        <svg class="w-10 h-10 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="8" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                            <path d="M12 4 L12 20" stroke-width="1" stroke-dasharray="1,2"/>
+                            <path d="M4 12 L20 12" stroke-width="1" stroke-dasharray="1,2"/>
+                            <path d="M6 6 L18 18" stroke-width="1" stroke-dasharray="1,2"/>
+                            <path d="M6 18 L18 6" stroke-width="1" stroke-dasharray="1,2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Квантовая физика</h3>
+                    <p class="text-center text-gray-600">Меня увлекают квантовые частицы, волновые функции и теория струн. Я читаю книги по квантовой механике и смотрю научные лекции.</p>
+                </div>
+                
+                <!-- Дизайн -->
+                <div class="interest-item bg-white p-6 rounded-lg shadow-md">
+                    <div class="interest-icon mx-auto">
+                        <svg class="w-10 h-10 text-[#2ecc71]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Дизайн</h3>
+                    <p class="text-center text-gray-600">Я люблю создавать красивые и функциональные вещи. Изучаю принципы дизайна и применяю их в своих проектах и моделях из Лего.</p>
+                </div>
+                
+                <!-- Новые продукты -->
+                <div class="interest-item bg-white p-6 rounded-lg shadow-md">
+                    <div class="interest-icon mx-auto">
+                        <svg class="w-10 h-10 text-[#f39c12]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Новые продукты</h3>
+                    <p class="text-center text-gray-600">Мне нравится изучать новые технологии и изобретения. Я слежу за новинками в мире техники и мечтаю создавать свои инновационные продукты.</p>
+                </div>
+                
+                <!-- Окружающий мир -->
+                <div class="interest-item bg-white p-6 rounded-lg shadow-md">
+                    <div class="interest-icon mx-auto">
+                        <svg class="w-10 h-10 text-[#3498db]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Окружающий мир</h3>
+                    <p class="text-center text-gray-600">Я люблю исследовать природу, наблюдать за животными и растениями. Меня интересует экология и то, как мы можем сохранить нашу планету.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мои проекты -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-title">Мои проекты</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <!-- Электрический байк -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Электрический байк -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Колеса -->
+                            <circle cx="100" cy="140" r="40" fill="none" stroke="#2c3e50" stroke-width="5"/>
+                            <circle cx="300" cy="140" r="40" fill="none" stroke="#2c3e50" stroke-width="5"/>
+                            
+                            <!-- Спицы -->
+                            <line x1="100" y1="100" x2="100" y2="180" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="60" y1="140" x2="140" y2="140" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="70" y1="110" x2="130" y2="170" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="70" y1="170" x2="130" y2="110" stroke="#2c3e50" stroke-width="2"/>
+                            
+                            <line x1="300" y1="100" x2="300" y2="180" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="260" y1="140" x2="340" y2="140" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="270" y1="110" x2="330" y2="170" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="270" y1="170" x2="330" y2="110" stroke="#2c3e50" stroke-width="2"/>
+                            
+                            <!-- Рама -->
+                            <line x1="100" y1="140" x2="200" y2="100" stroke="#3498db" stroke-width="8"/>
+                            <line x1="200" y1="100" x2="300" y2="140" stroke="#3498db" stroke-width="8"/>
+                            <line x1="200" y1="100" x2="200" y2="60" stroke="#3498db" stroke-width="8"/>
+                            <line x1="200" y1="60" x2="180" y2="60" stroke="#3498db" stroke-width="8"/>
+                            <line x1="100" y1="140" x2="160" y2="180" stroke="#3498db" stroke-width="8"/>
+                            <line x1="160" y1="180" x2="200" y2="180" stroke="#3498db" stroke-width="8"/>
+                            <line x1="200" y1="180" x2="300" y2="140" stroke="#3498db" stroke-width="8"/>
+                            
+                            <!-- Педали и цепь -->
+                            <circle cx="160" cy="180" r="15" fill="#f39c12"/>
+                            <line x1="160" y1="165" x2="160" y2="195" stroke="#2c3e50" stroke-width="3"/>
+                            <path d="M160 180 L300 140" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                            
+                            <!-- Аккумулятор -->
+                            <rect x="210" y="120" width="40" height="20" fill="#2ecc71"/>
+                            
+                            <!-- Мотор -->
+                            <circle cx="300" cy="140" r="15" fill="#e74c3c"/>
+                            
+                            <!-- Руль -->
+                            <line x1="200" y1="60" x2="220" y2="40" stroke="#3498db" stroke-width="8"/>
+                            <line x1="180" y1="60" x2="160" y2="40" stroke="#3498db" stroke-width="8"/>
+                            
+                            <!-- Сиденье -->
+                            <rect x="190" y="95" width="20" height="10" rx="5" fill="#2c3e50"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Электрический байк</h3>
+                            <span class="badge">Техника</span>
+                        </div
+                        <p class="text-gray-600 mb-4">Мы с командой собрали электрический байк, использовав мотор мощностью 384 Вт и аккумулятор 24 В. Байк может двигаться без остановок до 60 минут.</p>
+                        <button class="btn-primary w-full project-details" data-project="bike">Подробнее</button>
+                    </div>
+                </div>
+                
+                <!-- Модели из Лего -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Фон -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Лего модели -->
+                            <!-- Робот -->
+                            <rect x="50" y="100" width="60" height="80" fill="#3498db"/>
+                            <rect x="60" y="80" width="40" height="20" rx="5" fill="#3498db"/>
+                            <circle cx="70" cy="90" r="5" fill="#2c3e50"/>
+                            <circle cx="90" cy="90" r="5" fill="#2c3e50"/>
+                            <rect x="75" y="100" width="10" height="5" fill="#2c3e50"/>
+                            <rect x="40" y="120" width="20" height="40" fill="#3498db"/>
+                            <rect x="100" y="120" width="20" height="40" fill="#3498db"/>
+                            
+                            <!-- Здание -->
+                            <rect x="170" y="70" width="100" height="110" fill="#e74c3c"/>
+                            <rect x="180" y="80" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="210" y="80" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="240" y="80" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="180" y="110" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="210" y="110" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="240" y="110" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="180" y="140" width="20" height="20" fill="#f8f9fa"/>
+                            <rect x="210" y="140" width="20" height="40" fill="#f8f9fa"/>
+                            <rect x="240" y="140" width="20" height="20" fill="#f8f9fa"/>
+                            
+                            <!-- Космический корабль -->
+                            <polygon points="320,70 350,120 380,70" fill="#9b59b6"/>
+                            <rect x="330" y="120" width="40" height="60" fill="#9b59b6"/>
+                            <circle cx="350" cy="100" r="10" fill="#f39c12"/>
+                            <rect x="320" y="150" width="10" height="30" fill="#9b59b6"/>
+                            <rect x="370" y="150" width="10" height="30" fill="#9b59b6"/>
+                            <rect x="340" y="180" width="20" height="10" fill="#e74c3c"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Модели из Лего</h3>
+                            <span class="badge">Конструирование</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Я построил более 20 моделей из Лего, включая роботов, здания, космические корабли и механизмы. Некоторые из них — мои собственные конструкции, а другие — по инструкциям.</p>
+                        <button class="btn-primary w-full project-details" data-project="lego">Подробнее</button>
+                    </div>
+                </div>
+                
+                <!-- Умный дом -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Фон -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Дом -->
+                            <rect x="100" y="80" width="200" height="100" fill="#ecf0f1"/>
+                            <polygon points="100,80 200,30 300,80" fill="#3498db"/>
+                            
+                            <!-- Окна -->
+                            <rect x="130" y="100" width="30" height="30" fill="#f39c12"/>
+                            <line x1="145" y1="100" x2="145" y2="130" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="130" y1="115" x2="160" y2="115" stroke="#2c3e50" stroke-width="2"/>
+                            
+                            <rect x="240" y="100" width="30" height="30" fill="#2ecc71"/>
+                            <line x1="255" y1="100" x2="255" y2="130" stroke="#2c3e50" stroke-width="2"/>
+                            <line x1="240" y1="115" x2="270" y2="115" stroke="#2c3e50" stroke-width="2"/>
+                            
+                            <!-- Дверь -->
+                            <rect x="185" y="130" width="30" height="50" fill="#e74c3c"/>
+                            <circle cx="205" cy="155" r="3" fill="#f1c40f"/>
+                            
+                            <!-- Умные устройства -->
+                            <circle cx="130" cy="70" r="10" fill="#9b59b6"/>
+                            <circle cx="270" cy="70" r="10" fill="#9b59b6"/>
+                            
+                            <!-- Соединения -->
+                            <path d="M130 70 L150 50 L250 50 L270 70" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M150 50 L150 100" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M250 50 L250 100" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                            <path d="M200 50 L200 130" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                            
+                            <!-- Планшет управления -->
+                            <rect x="320" y="120" width="40" height="30" rx="3" fill="#34495e"/>
+                            <rect x="325" y="125" width="30" height="20" fill="#3498db"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Умный дом</h3>
+                            <span class="badge">Электроника</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Я создал модель умного дома с Arduino. В проекте есть автоматическое освещение, датчики температуры и влажности, а также система управления через смартфон.</p>
+                        <button class="btn-primary w-full project-details" data-project="smarthome">Подробнее</button>
+                    </div>
+                </div>
+                
+                <!-- Квантовый симулятор -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Фон -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Компьютер -->
+                            <rect x="150" y="100" width="100" height="70" rx="5" fill="#34495e"/>
+                            <rect x="160" y="110" width="80" height="50" fill="#2c3e50"/>
+                            
+                            <!-- Экран с квантовой визуализацией -->
+                            <rect x="165" y="115" width="70" height="40" fill="#1abc9c"/>
+                            
+                            <!-- Квантовые частицы на экране -->
+                            <circle cx="180" cy="125" r="3" fill="#f1c40f"/>
+                            <circle cx="200" cy="135" r="3" fill="#f1c40f"/>
+                            <circle cx="220" cy="125" r="3" fill="#f1c40f"/>
+                            
+                            <!-- Волновые функции -->
+                            <path d="M165 135 C175 125, 185 145, 195 135 C205 125, 215 145, 225 135 C235 125, 245 145, 235 135" stroke="#e74c3c" stroke-width="1" fill="none"/>
+                            <path d="M165 140 C175 130, 185 150, 195 140 C205 130, 215 150, 225 140 C235 130, 245 150, 235 140" stroke="#3498db" stroke-width="1" fill="none"/>
+                            
+                            <!-- Клавиатура -->
+                            <rect x="170" y="170" width="60" height="20" rx="3" fill="#7f8c8d"/>
+                            <line x1="180" y1="170" x2="180" y2="190" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="190" y1="170" x2="190" y2="190" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="200" y1="170" x2="200" y2="190" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="210" y1="170" x2="210" y2="190" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="220" y1="170" x2="220" y2="190" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="170" y1="175" x2="230" y2="175" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="170" y1="180" x2="230" y2="180" stroke="#ecf0f1" stroke-width="1"/>
+                            <line x1="170" y1="185" x2="230" y2="185" stroke="#ecf0f1" stroke-width="1"/>
+                            
+                            <!-- Формулы вокруг -->
+                            <text x="100" y="80" font-family="monospace" font-size="10" fill="#2c3e50">|ψ⟩ = α|0⟩ + β|1⟩</text>
+                            <text x="250" y="80" font-family="monospace" font-size="10" fill="#2c3e50">H|0⟩ = |+⟩</text>
+                            <text x="100" y="180" font-family="monospace" font-size="10" fill="#2c3e50">|α|² + |β|² = 1</text>
+                            <text x="250" y="180" font-family="monospace" font-size="10" fill="#2c3e50">CNOT</text>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Квантовый симулятор</h3>
+                            <span class="badge">Программирование</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Я создал простой симулятор квантовых вычислений в Scratch. Он показывает, как работают кубиты и базовые квантовые вентили, такие как вентиль Адамара и CNOT.</p>
+                        <button class="btn-primary w-full project-details" data-project="quantum">Подробнее</button>
+                    </div>
+                </div>
+                
+                <!-- Робот-сортировщик -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Фон -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Конвейер -->
+                            <rect x="50" y="150" width="300" height="10" fill="#7f8c8d"/>
+                            <rect x="50" y="160" width="300" height="5" fill="#34495e"/>
+                            
+                            <!-- Опоры конвейера -->
+                            <rect x="70" y="165" width="10" height="20" fill="#7f8c8d"/>
+                            <rect x="320" y="165" width="10" height="20" fill="#7f8c8d"/>
+                            
+                            <!-- Робот-манипулятор -->
+                            <rect x="180" y="100" width="40" height="50" fill="#3498db"/>
+                            <rect x="190" y="80" width="20" height="20" fill="#3498db"/>
+                            <circle cx="200" cy="90" r="5" fill="#e74c3c"/>
+                            
+                            <!-- Рука робота -->
+                            <rect x="220" y="110" width="60" height="10" fill="#3498db"/>
+                            <rect x="280" y="110" width="10" height="30" fill="#3498db"/>
+                            <path d="M280 140 L290 140 L290 130 L280 130" fill="#3498db"/>
+                            
+                            <!-- Предметы для сортировки -->
+                            <circle cx="100" cy="145" r="10" fill="#e74c3c"/>
+                            <rect x="130" y="135" width="20" height="15" fill="#2ecc71"/>
+                            <polygon points="170,135 180,150 160,150" fill="#f39c12"/>
+                            <circle cx="350" cy="145" r="10" fill="#9b59b6"/>
+                            
+                            <!-- Контейнеры для сортировки -->
+                            <rect x="50" y="170" width="30" height="20" fill="#e74c3c" fill-opacity="0.3"/>
+                            <rect x="90" y="170" width="30" height="20" fill="#2ecc71" fill-opacity="0.3"/>
+                            <rect x="130" y="170" width="30" height="20" fill="#f39c12" fill-opacity="0.3"/>
+                            <rect x="170" y="170" width="30" height="20" fill="#9b59b6" fill-opacity="0.3"/>
+                            
+                            <!-- Сенсоры -->
+                            <rect x="150" y="120" width="20" height="10" fill="#34495e"/>
+                            <circle cx="160" cy="125" r="3" fill="#e74c3c"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Робот-сортировщик</h3>
+                            <span class="badge">Робототехника</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Я создал робота из Lego Mindstorms, который сортирует предметы по цвету. Робот использует цветовой датчик для определения цвета и сортирует предметы по соответствующим контейнерам.</p>
+                        <button class="btn-primary w-full project-details" data-project="robot">Подробнее</button>
+                    </div>
+                </div>
+                
+                <!-- Солнечная электростанция -->
+                <div class="project-card bg-white">
+                    <div class="h-48 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Фон -->
+                            <rect width="400" height="200" fill="#f8f9fa"/>
+                            
+                            <!-- Солнце -->
+                            <circle cx="50" cy="50" r="30" fill="#f39c12"/>
+                            <line x1="50" y1="10" x2="50" y2="0" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="50" y1="90" x2="50" y2="100" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="10" y1="50" x2="0" y2="50" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="90" y1="50" x2="100" y2="50" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="22" y1="22" x2="15" y2="15" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="78" y1="78" x2="85" y2="85" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="22" y1="78" x2="15" y2="85" stroke="#f39c12" stroke-width="3"/>
+                            <line x1="78" y1="22" x2="85" y2="15" stroke="#f39c12" stroke-width="3"/>
+                            
+                            <!-- Солнечные панели -->
+                            <rect x="150" y="80" width="60" height="40" fill="#3498db"/>
+                            <rect x="220" y="80" width="60" height="40" fill="#3498db"/>
+                            <rect x="290" y="80" width="60" height="40" fill="#3498db"/>
+                            
+                            <line x1="155" y1="85" x2="205" y2="85" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="155" y1="95" x2="205" y2="95" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="155" y1="105" x2="205" y2="105" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="155" y1="115" x2="205" y2="115" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="165" y1="80" x2="165" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="175" y1="80" x2="175" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="185" y1="80" x2="185" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="195" y1="80" x2="195" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            
+                            <line x1="225" y1="85" x2="275" y2="85" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="225" y1="95" x2="275" y2="95" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="225" y1="105" x2="275" y2="105" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="225" y1="115" x2="275" y2="115" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="235" y1="80" x2="235" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="245" y1="80" x2="245" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="255" y1="80" x2="255" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="265" y1="80" x2="265" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            
+                            <line x1="295" y1="85" x2="345" y2="85" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="295" y1="95" x2="345" y2="95" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="295" y1="105" x2="345" y2="105" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="295" y1="115" x2="345" y2="115" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="305" y1="80" x2="305" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="315" y1="80" x2="315" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="325" y1="80" x2="325" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            <line x1="335" y1="80" x2="335" y2="120" stroke="#2c3e50" stroke-width="1"/>
+                            
+                            <!-- Опоры для панелей -->
+                            <rect x="175" y="120" width="10" height="30" fill="#7f8c8d"/>
+                            <rect x="245" y="120" width="10" height="30" fill="#7f8c8d"/>
+                            <rect x="315" y="120" width="10" height="30" fill="#7f8c8d"/>
+                            
+                            <!-- Аккумулятор -->
+                            <rect x="200" y="160" width="100" height="30" fill="#2c3e50"/>
+                            <rect x="210" y="155" width="10" height="5" fill="#7f8c8d"/>
+                            <rect x="280" y="155" width="10" height="5" fill="#7f8c8d"/>
+                            
+                            <!-- Провода -->
+                            <path d="M180 120 L180 150 L200 150 L200 160" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                            <path d="M250 120 L250 150 L250 160" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                            <path d="M320 120 L320 150 L300 150 L300 160" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                            
+                            <!-- Лампочка -->
+                            <circle cx="350" cy="160" r="10" fill="#f1c40f"/>
+                            <path d="M350 150 L350 140" stroke="#7f8c8d" stroke-width="2"/>
+                            <path d="M300 175 L350 175 L350 170" stroke="#e74c3c" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Солнечная электростанция</h3>
+                            <span class="badge">Энергетика</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Я создал модель солнечной электростанции, которая преобразует солнечный свет в электричество. Проект демонстрирует принципы возобновляемой энергии и может заряжать небольшие устройства.</p>
+                        <button class="btn-primary w-full project-details" data-project="solar">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+ 
+
+    <!-- Контакты -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold section-title">Связаться со мной</h2>
+            <div class="flex flex-col md:flex-row mt-8">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <p class="text-lg mb-6">Если вы хотите обсудить интересные проекты, задать вопрос или просто пообщаться на научные темы, вы можете связаться со мной через мои социальные сети или отправить сообщение через форму.</p>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#3498db] flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <span>lev.young.scientist@example.com</span>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#2ecc71] flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <span>Эспоо, Финляндия</span>
+                    </div>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#3498db] flex items-center justify-center text-white hover:bg-[#2980b9] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#e74c3c] flex items-center justify-center text-white hover:bg-[#c0392b] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#9b59b6] flex items-center justify-center text-white hover:bg-[#8e44ad] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#1abc9c] flex items-center justify-center text-white hover:bg-[#16a085] transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-gray-100 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Имя</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3498db]" placeholder="Ваше имя">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3498db]" placeholder="Ваш email">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Сообщение</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3498db]" placeholder="Ваше сообщение"></textarea>
+                        </div>
+                        <button type="button" class="btn-primary w-full">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-[#2c3e50] text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold">Лев<span class="text-[#2ecc71]">.</span></h3>
+                    <p class="text-gray-300">Юный изобретатель и исследователь</p>
+                </div>
+                <div class="flex flex-col md:flex-row md:space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white mb-2 md:mb-0">Обо мне</a>
+                    <a href="#interests" class="text-gray-300 hover:text-white mb-2 md:mb-0">Интересы</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white mb-2 md:mb-0">Проекты</a>
+                    <a href="#gallery" class="text-gray-300 hover:text-white mb-2 md:mb-0">Галерея</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white">Контакты</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Лев. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна для проектов -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalContent">
+                <!-- Содержимое будет добавлено через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Мобильное меню
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрыть мобильное меню после клика
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Модальные окна для проектов
+        const modal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Данные проектов
+        const projectData = {
+            bike: {
+                title: "Электрический велосипед",
+                description: "Мой электрический велосипед — это проект, который я реализовал с небольшой помощью папы. Мы взяли обычный велосипед и модифицировали его, добавив электрический мотор и аккумулятор.",
+                details: [
+                    "Мотор: 250 Вт, установлен на заднем колесе",
+                    "Аккумулятор: 36В, 10Ач, литий-ионный",
+                    "Контроллер: 36В, 15А с регенеративным торможением",
+                    "Максимальная скорость: 25 км/ч",
+                    "Запас хода: до 30 км на одном заряде",
+                    "Время зарядки: около 4-5 часов"
+                ],
+                challenges: "Самым сложным в этом проекте было правильно подключить все электрические компоненты и настроить контроллер. Также было непросто найти оптимальное место для размещения аккумулятора, чтобы сохранить баланс велосипеда.",
+                learning: "Я узнал много нового об электродвигателях, аккумуляторах и электрических схемах. Также я научился паять провода и использовать мультиметр для проверки соединений."
+            },
+            lego: {
+                title: "Модели из Лего",
+                description: "Я увлекаюсь конструированием из Лего с 5 лет. За это время я собрал более 20 различных моделей, как по инструкциям, так и собственного дизайна.",
+                details: [
+                    "Робот-манипулятор с программируемыми движениями",
+                    "Модель Международной космической станции",
+                    "Рабочий механический экскаватор",
+                    "Автомобиль с работающей подвеской и рулевым управлением",
+                    "Модель квантового компьютера с визуализацией кубитов",
+                    "Шагающий робот с дистанционным управлением",
+                    "Модель солнечной системы с вращающимися планетами"
+                ],
+                challenges: "Самым сложным было создать механизмы, которые работают плавно и надежно. Особенно трудно было сделать шагающего робота, чтобы он не падал при ходьбе.",
+                learning: "Благодаря Лего я научился понимать механику, передачи, рычаги и другие физические принципы. Также я развил пространственное мышление и научился читать технические схемы."
+            },
+            smarthome: {
+                title: "Умный дом",
+                description: "Я создал модель умного дома с использованием Arduino. Этот проект демонстрирует, как можно автоматизировать различные функции в доме с помощью датчиков и микроконтроллеров.",
+                details: [
+                    "Автоматическое освещение, реагирующее на уровень освещенности и движение",
+                    "Датчики температуры и влажности с выводом данных на дисплей",
+                    "Система безопасности с датчиками движения и сиреной",
+                    "Автоматическое проветривание при повышении уровня CO2",
+                    "Управление через смартфон с помощью Bluetooth-модуля",
+                    "Голосовое управление основными функциями"
+                ],
+                challenges: "Самым сложным было настроить взаимодействие между различными датчиками и создать удобный интерфейс управления. Также было непросто написать код, который бы работал стабильно и без ошибок.",
+                learning: "Я научился программировать Arduino, работать с различными датчиками и модулями, а также создавать простые мобильные приложения для управления устройствами."
+            },
+            quantum: {
+                title: "Квантовый симулятор",
+                description: "Я создал простой симулятор квантовых вычислений в Scratch. Этот проект помогает понять основы квантовой информатики и показывает, как работают кубиты и квантовые вентили.",
+                details: [
+                    "Визуализация состояний кубитов на сфере Блоха",
+                    "Симуляция базовых квантовых вентилей: X, Y, Z, H, CNOT",
+                    "Демонстрация квантовой запутанности",
+                    "Простые квантовые алгоритмы: телепортация и алгоритм Дойча",
+                    "Интерактивный интерфейс для создания квантовых схем",
+                    "Обучающие материалы по основам квантовых вычислений"
+                ],
+                challenges: "Самым сложным было правильно визуализировать квантовые состояния и операции, чтобы они были понятны даже тем, кто не знаком с квантовой физикой. Также было непросто реализовать математику квантовых вычислений в Scratch.",
+                learning: "Я глубже понял принципы квантовой механики и квантовых вычислений. Также я улучшил свои навыки программирования и научился объяснять сложные концепции простым языком."
+            },
+            robot: {
+                title: "Робот-сортировщик",
+                description: "Я создал робота из Lego Mindstorms, который сортирует предметы по цвету. Робот использует цветовой датчик для определения цвета предмета и сортирует их по соответствующим контейнерам.",
+                details: [
+                    "Цветовой датчик для определения 8 различных цветов",
+                    "Механический манипулятор для перемещения предметов",
+                    "Конвейерная лента для подачи предметов",
+                    "Программируемый контроллер EV3",
+                    "4 контейнера для сортировки разных цветов",
+                    "Скорость сортировки: до 10 предметов в минуту"
+                ],
+                challenges: "Самым сложным было создать надежный механизм захвата, который мог бы работать с предметами разной формы. Также было непросто настроить цветовой датчик для точного определения цветов при разном освещении.",
+                learning: "Я научился программировать контроллер EV3, создавать механические системы с высокой точностью и решать проблемы с калибровкой датчиков."
+            },
+            solar: {
+                title: "Солнечная электростанция",
+                description: "Я создал модель солнечной электростанции, которая преобразует солнечный свет в электричество. Проект демонстрирует принципы возобновляемой энергии и может заряжать небольшие устройства.",
+                details: [
+                    "3 солнечные панели общей мощностью 15 Вт",
+                    "Контроллер заряда для оптимизации работы",
+                    "Аккумулятор на 12В для хранения энергии",
+                    "Инвертор для преобразования постоянного тока в переменный",
+                    "USB-порты для зарядки устройств",
+                    "Светодиодное освещение как демонстрация работы"
+                ],
+                challenges: "Самым сложным было правильно рассчитать и подобрать компоненты, чтобы они работали эффективно вместе. Также было непросто создать систему, которая бы работала даже при низкой освещенности.",
+                learning: "Я узнал много нового о солнечной энергии, электрических схемах и энергоэффективности. Также я научился рассчитывать энергопотребление устройств и оптимизировать системы для максимальной эффективности."
+            }
+        };
+        
+        // Открытие модального окна
+        document.querySelectorAll('.project-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const project = projectData[projectId];
+                
+                if (project) {
+                    let detailsList = '';
+                    project.details.forEach(detail => {
+                        detailsList += `<li class="flex items-start mb-2">
+                            <svg class="w-5 h-5 text-[#3498db] mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>${detail}</span>
+                        </li>`;
+                    });
+                    
+                    modalContent.innerHTML = `
+                        <h2 class="text-3xl font-bold mb-4">${project.title}</h2>
+                        <p class="text-lg mb-6">${project.description}</p>
+                        
+                        <h3 class="text-xl font-bold mb-3">Особенности проекта:</h3>
+                        <ul class="mb-6">
+                            ${detailsList}
+                        </ul>
+                        
+                        <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                            <h3 class="text-xl font-bold mb-2">Сложности:</h3>
+                            <p>${project.challenges}</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-bold mb-2">Чему я научился:</h3>
+                            <p>${project.learning}</p>
+                        </div>
+                    `;
+                    
+                    modal.style.display = 'flex';
+                }
+            });
+        });
+        
+        // Закрытие модального окна
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Анимация квантовых частиц
+        function createQuantumParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('quantum-particle');
+            
+            // Случайная позиция
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            // Случайный размер
+            const size = Math.random() * 6 + 4;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Случайный цвет
+            const colors = ['#3498db', '#2ecc71', '#f39c12', '#e74c3c', '#9b59b6'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.backgroundColor = color;
+            particle.style.boxShadow = `0 0 10px ${color}`;
+            
+            document.body.appendChild(particle);
+            
+            // Анимация движения
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 2 + 1;
+            const vx = Math.cos(angle) * speed;
+            const vy = Math.sin(angle) * speed;
+            
+            let posX = x;
+            let posY = y;
+            
+            const animate = () => {
+                posX += vx;
+                posY += vy;
+                
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                
+                // Удаление частицы, когда она выходит за пределы экрана
+                if (posX < -10 || posX > window.innerWidth + 10 || posY < -10 || posY > window.innerHeight + 10) {
+                    particle.remove();
+                } else {
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            animate();
+        }
+        
+        // Создание частиц периодически
+        setInterval(createQuantumParticle, 2000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'968f5d2585b58d5a',t:'MTc1NDE1NjQ2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+    
